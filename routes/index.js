@@ -1,5 +1,4 @@
 import express from "express"
-//var v1 = require('./v1.js')
 import v1 from "./v1.js"
 
 const router = express.Router()

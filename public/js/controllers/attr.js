@@ -1,5 +1,4 @@
 import request from 'request'
-//const request = require('request')
 
 export const getPointList = async (req, res) => {
   const clientId = "7sinGcPtJnPB5tVX"
