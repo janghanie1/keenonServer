@@ -3,7 +3,7 @@
 ### requirement
 * nodeJS
 
-### 1. repository copy to your local device
+### 1. clone the repository to your local device
 
 ```
 git clone https://github.com/janghanie1/keenonServer.git
