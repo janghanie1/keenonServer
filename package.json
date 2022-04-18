@@ -1,0 +1,22 @@
+{
+  "name": "keenon",
+  "type" :"module",
+  "version": "1.0.0",
+  "description": "keenon API를 위한 pilot 프로젝트입니다.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.3",
+    "node-fetch": "^3.2.3",
+    "request": "^2.88.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/janghanie1/keenonServer.git"
+  }
+}
