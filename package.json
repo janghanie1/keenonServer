@@ -1,6 +1,6 @@
 {
   "name": "keenon",
-  "type" :"module",
+  "type": "module",
   "version": "1.0.0",
   "description": "keenon API를 위한 pilot 프로젝트입니다.",
   "main": "index.js",
@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "ejs": "^3.0.1",
     "express": "^4.17.3",
     "node-fetch": "^3.2.3",

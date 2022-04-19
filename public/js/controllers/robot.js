@@ -1,15 +1,26 @@
 import request from 'request'
 
+function getToken(option){
+	return new Promise(function (resolve, reject){
+		request.post(option, function(err, response, body){
+			if(!err && response.statusCode == 200){
+				resolve(body);
+                        }else{
+                                reject(err);
+                        }
+		})
+	})
+}
+
 export const createRemoteCall = async (req, res) => {
-  const clientId = "7sinGcPtJnPB5tVX" 
-  const secret = "qf32qxPGjCzXBVk0"
+  const clientId = process.env.clientId 
+  const secret = process.env.secret
   const {uuid,
 	 pointId,
 	 storeId,
 	 sceneCode,
 	 robotId
   	} = req.body
-  
   const tokenOption = {
 	  uri : "https://console.peanut.keenonrobot.com/api/open/oauth/token",
 	  method : "POST",	
@@ -36,31 +47,21 @@ export const createRemoteCall = async (req, res) => {
           json:true
   }
 
-  function getToken(option){
-  	return new Promise(function (resolve, reject){
-		request.post(option, function(err, response, body){
-			if(!err && response.statusCode == 200){
-				resolve(body);
-			}else{
-				reject(err);
-			}
-		})
-	})
-  }
   async function callRobot(){
 	let credential = await getToken(tokenOption)
 	remoteOption.headers = {
-		Authorization : credential.access_token
+		Authorization : 'bearer ' + credential.access_token
 	}
-	console.log(remoteOption)
+	res.send(remoteOption)
+//	console.log(remoteOption)
 	//request.post(remoteOption,function(err,response,body){res.send(response.statusCode)})
   }
   callRobot();
 }
 
 export const backRemoteCall = async (req, res) => {
-  const clientId = "7sinGcPtJnPB5tVX"
-  const secret = "qf32qxPGjCzXBVk0"
+  const clientId = process.env.clientId
+  const secret = process.env.secret
   const {
          storeId,
          robotId
@@ -89,17 +90,6 @@ export const backRemoteCall = async (req, res) => {
           json:true
   }
 
-  function getToken(option){
-        return new Promise(function (resolve, reject){
-                request.post(option, function(err, response, body){
-                        if(!err && response.statusCode == 200){
-                                resolve(body);
-                        }else{
-                                reject(err);
-                        }
-                })
-        })
-  }
   async function backRobot(){
         let credential = await getToken(tokenOption)
         remoteOption.headers = {

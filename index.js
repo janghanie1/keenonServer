@@ -1,9 +1,12 @@
 import routes from "./routes/index.js"
 import express from 'express'
+import dotenv from 'dotenv'
+dotenv.config()
 
 var app = express(); //express를 실행하여 app object를 초기화 합니다.
 
 app.use(express.json())
+app.use(express.urlencoded({extended:true}));
 app.use('/', routes)
 
 

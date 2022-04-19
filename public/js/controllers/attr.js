@@ -1,8 +1,8 @@
 import request from 'request'
 
 export const getPointList = async (req, res) => {
-  const clientId = "7sinGcPtJnPB5tVX"
-  const secret = "qf32qxPGjCzXBVk0"
+  const clientId = process.env.clientId
+  const secret = process.env.secret
   const {sceneCode} = req.query
   
   const tokenOption = {
