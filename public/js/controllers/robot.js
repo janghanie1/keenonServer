@@ -11,7 +11,49 @@ function getPostResult(option){
 		})
 	})
 }
-	
+
+export const getRobotStatus = async (req,res) => {
+  const clientId = process.env.clientId
+  const secret = process.env.secret
+  
+  const {robotId} = req.query
+ 
+  const tokenOption = {
+          uri : "https://console.peanut.keenonrobot.com/api/open/oauth/token",
+          method : "POST",
+          headers:{
+                'Content-Type':'application/x-www-form-urlencoded',
+          },
+          form:{
+                  client_id : clientId,
+                  client_secret : secret,
+                  grant_type : "client_credentials"
+          },
+          json:true
+  }
+ 
+  const statusOption = {
+	  uri : "https://console.peanut.keenonrobot.com/api/open/scene/v1/robot/status",
+	  method : "GET",
+	  qs:{
+		  robotId : robotId
+	  },
+	  json:true
+  }
+  async function statusRobot(){
+	  let credential = await getPostResult(tokenOption)
+	  //console.log(credential.access_token)
+	  statusOption.headers = {
+		  'Authorization' : 'bearer ' + credential.access_token
+	  }
+	  request.get(statusOption, function(err,response,body){res.send(body)})
+  }
+  statusRobot()
+}
+	  
+
+
+
 export const createRemoteCall = async (req, res) => {
   const clientId = process.env.clientId 
   const secret = process.env.secret
@@ -59,17 +101,15 @@ export const createRemoteCall = async (req, res) => {
 		'Authorization' : 'bearer ' + credential.access_token
 	}
 	let task = await getPostResult(remoteOption)
-	console.log(task)
-	const taskNo = task.taskNo
+	const taskNo = task.data.taskNo
 	errOption.headers = {
 		'Authorization' : 'bearer ' + credential.access_token
 	}
 	errOption.qs = {
 		taskNo : taskNo
 	}
-	console.log(errOption)
 
-	request.get(errOption,function(err,response,body){res.send(response)})
+	request.get(errOption,function(err,response,body){res.send(body)})
   }
   callRobot();
 }
