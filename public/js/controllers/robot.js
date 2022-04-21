@@ -51,9 +51,6 @@ export const getRobotStatus = async (req,res) => {
   statusRobot()
 }
 	  
-
-
-
 export const createRemoteCall = async (req, res) => {
   const clientId = process.env.clientId 
   const secret = process.env.secret
