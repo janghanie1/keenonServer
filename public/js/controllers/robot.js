@@ -42,7 +42,6 @@ export const getRobotStatus = async (req,res) => {
   }
   async function statusRobot(){
 	  let credential = await getPostResult(tokenOption)
-	  //console.log(credential.access_token)
 	  statusOption.headers = {
 		  'Authorization' : 'bearer ' + credential.access_token
 	  }
