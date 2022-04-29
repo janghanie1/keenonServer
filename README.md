@@ -9,8 +9,14 @@
 git clone https://github.com/janghanie1/keenonServer.git
 cd keenonServer
 ```
+### 2. put your id and password in .evn_example file
+```
+client_id= your_id
+password= your_password
 
-### 2. run
+change the file name .env_example to .env
+
+### 3. run
 
 ```
 npm install
