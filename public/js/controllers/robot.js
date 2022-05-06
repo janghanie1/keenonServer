@@ -136,7 +136,7 @@ export const backRemoteCall = async (req, res) => {
           method: "POST",
           form:{
                   storeId:storeId,
-                  robotId,robotId
+                  robotId:robotId
           },
           json:true
   }
