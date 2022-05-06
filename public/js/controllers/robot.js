@@ -81,7 +81,7 @@ export const createRemoteCall = async (req, res) => {
                   pointId:pointId,
                   storeId:storeId,
                   sceneCode:sceneCode,
-                  robotId,robotId
+                  robotId:robotId
           },
           json:true
   }
